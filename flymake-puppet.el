@@ -17,7 +17,11 @@ location."
 (defun flymake-puppet-init ()
   "Construct a command that flymake can use to check puppetscript source."
   (list "puppet-lint"
-        (list (flymake-init-create-temp-buffer-copy
+        (list "--no-80chars-check"
+	      "--no-autoloader_layout-check"
+	      "--no-nested_classes_or_defines-check"
+	      "--no-trailing_whitespace-check"
+	      (flymake-init-create-temp-buffer-copy
                'flymake-puppet-create-temp-in-system-tempdir))))
 
 (defun flymake-puppet-load ()
